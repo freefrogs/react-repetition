@@ -4,6 +4,15 @@
   &__margin {
     margin: 1em auto;
   }
+  &__header {
+    @include margin;
+    font-size: 1.6em;
+  }
+  &__paragraph {
+    @include margin;
+    font-size: 1em;
+    text-align: left;
+  }
 }
 
 .section {

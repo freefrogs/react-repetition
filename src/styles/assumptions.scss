@@ -1,0 +1,16 @@
+@import './variable.scss';
+
+.assumptions {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.list {
+  margin-left: 2.5em;
+  list-style-position: inside;
+  text-align: left;
+  line-height: 1.5em;
+  li:nth-child(even) {
+    color: $highlighted;
+  }
+}
