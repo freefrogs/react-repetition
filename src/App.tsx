@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.scss';
+import Navigation from './components/Navigation';
 import Assumptions from './pages/Assumptions';
 import Factorial from './pages/Factorial';
 import GithubSearch from './pages/GithubSearch';
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Router>
         <div className="section">
+          <Navigation />
           <Routes >
             <Route path="/" element={<Assumptions />} />
             <Route path="/factorial" element={<Factorial />} />

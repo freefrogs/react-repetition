@@ -1,0 +1,17 @@
+@import './variable.scss';
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: 1% auto;
+  &__link{
+    padding: 10px 20px;
+    font-size: 1.1vw;
+    font-weight: 800;
+    border-bottom: 2px solid transparent;
+    transition: .3s ease-in-out;
+    &--active {
+      border-bottom: 2px solid $details;
+    }
+  }
+}
