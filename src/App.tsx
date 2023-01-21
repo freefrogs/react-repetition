@@ -6,6 +6,7 @@ import Assumptions from './pages/Assumptions';
 import Factorial from './pages/Factorial';
 import GithubSearch from './pages/GithubSearch';
 import NotFound from './pages/NotFound';
+import MyFooter from './components/MyFooter';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <MyFooter />
     </div>
   );
 }

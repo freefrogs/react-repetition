@@ -1,5 +1,11 @@
 @import './variable.scss';
 
+.app {
+  &__margin {
+    margin: 1em auto;
+  }
+}
+
 .section {
   width: 80%;
   text-align: center;
@@ -9,5 +15,5 @@
   border: 6px solid $main-color;
   box-shadow: 10px 10px 20px $main-color;
   border-radius: 30px;
-  background: $app-bg-color;
+  background: $secondary-color;
 }

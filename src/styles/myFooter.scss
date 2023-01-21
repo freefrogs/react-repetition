@@ -1,0 +1,10 @@
+@import './variable.scss';
+
+.myFooter {
+  text-align: center;
+  font-size: 0.8em;
+  color: $secondary-color;
+  &__link {
+    color: $secondary-color;
+  }
+}
