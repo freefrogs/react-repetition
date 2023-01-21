@@ -1,0 +1,13 @@
+@import './variable.scss';
+
+.section {
+  width: 80%;
+  text-align: center;
+  margin: 2% auto;
+  padding: 1%;
+  min-height: 80vh;
+  border: 6px solid $main-color;
+  box-shadow: 10px 10px 20px $main-color;
+  border-radius: 30px;
+  background: $app-bg-color;
+}
