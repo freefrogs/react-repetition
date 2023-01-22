@@ -4,6 +4,9 @@
   &__margin {
     margin: 1em auto;
   }
+  &__text--left {
+    text-align: left;
+  }
   &__header {
     @include margin;
     font-size: 1.6em;
@@ -11,7 +14,42 @@
   &__paragraph {
     @include margin;
     font-size: 1em;
-    text-align: left;
+  }
+  &__input {
+    border: none;
+    border-bottom: 2px solid $details;
+    outline: transparent;
+    font-size: 1em;
+    padding: 0.25em;
+    margin: 0.5em 1em;
+    background: inherit;
+  }
+  &__btn {
+    font-size: 1em;
+    padding: 0.5em;
+    margin: 0.5em;
+    background: $details;
+    border: none;
+    color: $main-color;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: .3s ease-in-out;
+    opacity: 0.8;
+    font-family: $main-font;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+    &--disabled {
+      opacity: 0.6;
+      &:hover {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
+  &__error {
+    color: $error;
   }
 }
 

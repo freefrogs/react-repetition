@@ -17,9 +17,9 @@ const Navigation = () => {
 
   return (
     <nav className="navigation">
-      <Link className={`navigation__link ${checkIfActive('/')}`} to="/">Założenia</Link>
-      <Link className={`navigation__link ${checkIfActive('/factorial')}`} to="/factorial">Silnia</Link>
-      <Link className={`navigation__link ${checkIfActive('/githubsearch')}`} to="/githubsearch">Wyszukiwarka Github</Link>
+      <Link className={(`navigation__link ${checkIfActive('/')}`).trim()} to="/">Założenia</Link>
+      <Link className={(`navigation__link ${checkIfActive('/factorial')}`).trim()} to="/factorial">Silnia</Link>
+      <Link className={(`navigation__link ${checkIfActive('/githubsearch')}`).trim()} to="/githubsearch">Wyszukiwarka Github</Link>
     </nav>
   );
 }
