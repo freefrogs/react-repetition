@@ -1,0 +1,40 @@
+@import './variable.scss';
+
+.projects {
+  width: 80%;
+  margin: 2em auto 4em;
+  text-align: left;
+  &__card {
+    padding: 0 1em 0.5em;
+    &:nth-child(even) {
+      background-color: $details-2;
+    }
+  }
+  &__title {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid $details;
+  }
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+  }
+  &__commit {
+    margin-left: 3em;
+    padding: 0.3em 0 0.3em 1em;
+    border-left: 2px solid $details;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0.5em;
+      height: 0.5em;
+      background: $details;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      left: calc(-0.25em - 1px);
+    }
+  }
+}

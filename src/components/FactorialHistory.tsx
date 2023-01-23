@@ -6,10 +6,8 @@ const FactorialHistory = () => {
   const history = useSelector(getFactorialHistory);
 
   const handleClearHistory = () => {
-    console.log(history)
     dispatch(clearHistory());
   }
-  console.log(history)
 
   return (
     <div className="factorial-history">

@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../app/store';
-
-interface factorialState {
-  history: string[]
-}
+import type { factorialState } from '../types/factorial';
 
 const initialState: factorialState = {
   history: []
