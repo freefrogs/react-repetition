@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { addResult } from '../features/factorialSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addResult, updateFactorialArr, getFactorialArr } from '../features/factorialSlice';
 import FactorialHistory from "../components/FactorialHistory";
 
 const Factorial = () => {
@@ -11,59 +11,57 @@ const Factorial = () => {
   const dispatch = useDispatch();
 
   const checkInputValue = (val?: string) => {
-    if (!val || !/^\d+$/.test(val) || Number(val) <=0) {
-      setError('Wprowadź liczbę całkowitą większą od zera');
-    } else {
-      setError('');
-    }
+    const isNotNaturalNumber = !val || !/^\d+$/.test(val) || Number(val) <= 0;
+    isNotNaturalNumber ? setError('Wprowadź liczbę całkowitą większą od zera') : setError('');
   }
 
-  const factorialArr: (number)[] = [1, 1];
-
+  const factorialArr = useSelector(getFactorialArr);
   const factorial = (n:number) => {
-    for (let i = factorialArr.length; i <= n; i++) {
-      factorialArr.push(i * factorialArr[i-1]);
+    const newArr = [...factorialArr];
+    for (let i = newArr.length; i <= n; i++) {
+      newArr.push(i * newArr[i-1]);
     }
-
-    return factorialArr[n]
+    dispatch(updateFactorialArr(newArr));
+    return newArr[n]
   }
   
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    checkInputValue(e.target.value)
     setValue(e.target.value);
   }
 
   useEffect(() => {
-    checkInputValue(value)
-  }, [value]);
-
-  useEffect(() => {
     if (!!result) dispatch(addResult(result));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   }, [result]);
 
-  const calcFactorial = () => {
+  const calcFactorial = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     if (!value || !/^\d+$/.test(value) || Number(value) <= 0) return
     setResult(`${value}! = ${factorial(Number(value))}`);
   }
 
   return (
     <div className="factorial">
-      <h2 className="app__header">Oblicz silnię</h2>
-      <label>
-        <span>Wprowadź liczbę naturalną: </span>
-        <input
-          type="text"
-          value={value}
-          className="app__input"
-          onChange={handleInputChange}
-        />
-      </label>
-      <button
-        className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
-        disabled={ !!error }
-        onClick={calcFactorial}
-      >Oblicz</button>
-      <p className="app__error">{ error }</p>
+      <form>
+        <h2 className="app__header">Oblicz silnię</h2>
+        <label>
+          <span>Wprowadź liczbę naturalną: </span>
+          <input
+            type="text"
+            value={value}
+            className="app__input"
+            onChange={handleInputChange}
+          />
+        </label>
+        <button
+          className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
+          disabled={ !!error }
+          onClick={calcFactorial}
+        >Oblicz</button>
+        <p className="app__error">{ error }</p>
+      </form>
       <FactorialHistory />
     </div>
   );

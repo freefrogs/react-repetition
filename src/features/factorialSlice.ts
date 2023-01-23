@@ -4,7 +4,8 @@ import type { RootState } from '../app/store';
 import type { factorialState } from '../types/factorial';
 
 const initialState: factorialState = {
-  history: []
+  history: [],
+  factorialArr: [1, 1]
 }
 
 const factorialSlice = createSlice({
@@ -16,12 +17,16 @@ const factorialSlice = createSlice({
     },
     clearHistory: (state) => {
       state.history = [];
+    },
+    updateFactorialArr: (state, action: PayloadAction<number[]>) => {
+      state.factorialArr = action.payload;
     }
   }
 });
 
-export const { addResult, clearHistory } = factorialSlice.actions;
+export const { addResult, clearHistory, updateFactorialArr } = factorialSlice.actions;
 
 export const getFactorialHistory = (state: RootState) => state.factorial.history;
+export const getFactorialArr = (state: RootState) => state.factorial.factorialArr;
 
 export default factorialSlice.reducer;
