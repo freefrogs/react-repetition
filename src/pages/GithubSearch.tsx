@@ -60,11 +60,3 @@ const GithubSearch = () => {
 }
 
 export default GithubSearch;
-
-// https://docs.github.com/en/rest/search?apiVersion=2022-11-28#search-repositories
-// const url = `https://api.github.com/users/${freefrogs}/repos?sort=updated&per_page=5`;
-// https://api.github.com/repos/freefrogs/env1-test/commits?sort=updated&per_page=5
-// https://docs.github.com/en/rest/search?apiVersion=2022-11-28#search-commits
-
-// https://github.com/shinnn/github-username-regex/blob/master/index.js github login verification
-// const regex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;

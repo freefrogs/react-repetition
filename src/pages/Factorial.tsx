@@ -70,8 +70,3 @@ const Factorial = () => {
 }
 
 export default Factorial;
-
-// https://stackoverflow.com/questions/3959211/what-is-the-fastest-factorial-function-in-javascript
-// https://www.freecodecamp.org/news/how-to-factorialize-a-number-in-javascript-9263c89a4b38/
-// https://www.educative.io/answers/how-to-find-the-factorial-of-a-number-in-javascript
-// https://redux-toolkit.js.org/tutorials/typescript
