@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-repetition/static/css/main.a3b89011.css",
+    "main.js": "/react-repetition/static/js/main.510ab48d.js",
+    "index.html": "/react-repetition/index.html",
+    "main.a3b89011.css.map": "/react-repetition/static/css/main.a3b89011.css.map",
+    "main.510ab48d.js.map": "/react-repetition/static/js/main.510ab48d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3b89011.css",
+    "static/js/main.510ab48d.js"
+  ]
+}
