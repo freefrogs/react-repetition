@@ -1,0 +1,47 @@
+@import './variable.scss';
+
+.project {
+  width: 90%;
+  margin: 1em auto;
+  &__header {
+    font-weight: 800;
+    font-size: 1.1em;
+  }
+  &__owner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__avatar {
+    margin: 0 0.5em;
+    width: 70px;
+    border: 2px solid $details;
+    border-radius: 5px;
+    &--small {
+      width: 40px;
+    }
+  }
+  &__info {
+    margin: 1em auto;
+    padding: 1em;
+    border-bottom: 2px solid $details;
+    border-top: 2px solid $details;
+  }
+  &-commit__card {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    text-align: left;
+    gap: 1em;
+    &:nth-child(even) {
+      background-color: $details-2;
+    }
+  }
+  &__committer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+  

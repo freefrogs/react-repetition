@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation  } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../styles/navigation.scss';
 import { NAV_ELEMENTS } from '../utilities/variables';

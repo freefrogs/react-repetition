@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../app/store';
 import { fetchProjectsWithCommits } from '../features/githubSlice';
+import { checkIfLoginValid } from '../utilities/helpers';
 import SearchResult from "../components/SearchResult";
 
 const GithubSearch = () => {
@@ -10,13 +11,7 @@ const GithubSearch = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const checkInputValue = (val?: string) => {
-    if (!val?.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
-      setError('Wprowadź poprawny login github');
-    } else {
-      setError('');
-    }
-  }
+  const checkInputValue = (val?: string) => !checkIfLoginValid(val) ? setError('Wprowadź poprawny login github') : setError('');
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -26,8 +21,7 @@ const GithubSearch = () => {
   const getProjects = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const isValidInput = value?.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
-    if (isValidInput) dispatch(fetchProjectsWithCommits(value));
+    if (checkIfLoginValid(value)) dispatch(fetchProjectsWithCommits(value));
   }
 
   return (
@@ -44,7 +38,7 @@ const GithubSearch = () => {
           />
         </label>
         <button
-          className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
+          className={(`app__btn ${ !!error ? 'app__btn--disabled' : '' }`).trim()}
           disabled={ !!error }
           onClick={ getProjects }
         >Wyszukaj</button>

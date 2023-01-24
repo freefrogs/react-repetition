@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Project } from '../../types/github';
 import '../../styles/projects.scss';
 import CommitsCard from './CommitsCard';
@@ -7,7 +8,7 @@ interface ProjectProps {
 }
 
 const ProjectCard = ({ project }: ProjectProps) => {
-  const { html_url, name, commits } = project;
+  const { html_url, name, commits, owner } = project;
   
   return (
     <div className="projects__card">
@@ -17,15 +18,14 @@ const ProjectCard = ({ project }: ProjectProps) => {
           target="_blank"
           rel="noopener noreferrer"
         >{ name }</a>
-        <span className="projects__grid--last">
-          <button
-            className="app__btn"
-          >Zobacz szczegóły</button>
-        </span>
+        <Link
+          className="app__btn"
+          to={ `/project?login=${ owner.login }&repo=${ name }` }
+        >Zobacz szczegóły</Link>
       </div>
       <p>Ostatnie commity:</p>
       <div className="app__margin">
-        { commits?.length ? commits.map(commit => <CommitsCard commit={ commit } key={commit.sha} />) : 'brak danych' }
+        { commits?.length ? commits.map(commit => <CommitsCard commit={ commit } key={ commit.sha } />) : 'brak danych' }
       </div>
     </div>
   );
