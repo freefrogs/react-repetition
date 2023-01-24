@@ -3,7 +3,7 @@ import '../styles/assumptions.scss';
 const Assumptions = () => {
   return (
     <div className="assumptions">
-      <h2 className="app__header">Założenia</h2>
+      <h1 className="app__header">Założenia</h1>
       <div className="app__text--left">
         <p className="app__paragraph">Zadanie:</p>
         <p className="app__paragraph">Napisz aplikację korzystając z najnowszego api <strong>react.js (hooki, Context</strong>, itd.) spełniającą poniższe założenia.</p>

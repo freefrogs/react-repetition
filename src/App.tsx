@@ -1,4 +1,3 @@
-import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.scss';
 import Navigation from './components/Navigation';
@@ -8,17 +7,17 @@ import GithubSearch from './pages/GithubSearch';
 import NotFound from './pages/NotFound';
 import MyFooter from './components/MyFooter';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
         <div className="section">
           <Navigation />
-          <Routes >
-            <Route path="/" element={<Assumptions />} />
-            <Route path="/factorial" element={<Factorial />} />
-            <Route path="/githubsearch" element={<GithubSearch />} />
-            <Route path="*" element={<NotFound />} />
+          <Routes>
+            <Route path="/" element={ <Assumptions /> } />
+            <Route path="/factorial" element={ <Factorial /> } />
+            <Route path="/githubsearch" element={ <GithubSearch /> } />
+            <Route path="*" element={ <NotFound /> } />
           </Routes>
         </div>
       </Router>

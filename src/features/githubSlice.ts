@@ -29,7 +29,7 @@ const githubSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchProjectsWithCommits.fulfilled, (state, action: PayloadAction<Project[]>) => {
-        state.status = 'idle';
+        state.status = 'succeeded';
         state.projects = action.payload;
       })
       .addCase(fetchProjectsWithCommits.rejected, (state) => {

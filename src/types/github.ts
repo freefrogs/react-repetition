@@ -24,5 +24,5 @@ export interface Commit {
 
 export interface githubState {
   projects: Project[];
-  status: 'idle' | 'loading' | 'failed';
+  status: 'idle' | 'loading' | 'failed' | 'succeeded';
 }

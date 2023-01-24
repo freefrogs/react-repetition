@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import type { AppDispatch } from '../app/store'
-import Projects from "../components/Projects";
-import { getStatus, getGithubProjects, fetchProjectsWithCommits } from '../features/githubSlice';
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../app/store';
+import { fetchProjectsWithCommits } from '../features/githubSlice';
+import SearchResult from "../components/SearchResult";
 
 const GithubSearch = () => {
   const [error, setError] = useState<string>();
   const [value, setValue] = useState<string>('');
 
   const dispatch = useDispatch<AppDispatch>();
-  const projects = useSelector(getGithubProjects);
-  const status = useSelector(getStatus);
 
   const checkInputValue = (val?: string) => {
     if (!val?.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
@@ -22,39 +20,37 @@ const GithubSearch = () => {
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+    checkInputValue(e.target.value);
   }
 
-  useEffect(() => {
-    checkInputValue(value)
-  }, [value]);
+  const getProjects = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
 
-  const getProjects = () => {
-    if (value?.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
-      dispatch(fetchProjectsWithCommits(value));
-    }
+    const isValidInput = value?.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
+    if (isValidInput) dispatch(fetchProjectsWithCommits(value));
   }
 
   return (
     <div className="github">
-      <h2 className="app__header">Wyszukaj projekty wybranego autora</h2>
-      <label>
-        <span>Wpisz github login: </span>
-        <input
-          type="text"
-          value={value}
-          className="app__input"
-          onChange={ handleInputChange }
-        />
-      </label>
-      <button
-        className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
-        disabled={ !!error }
-        onClick={ getProjects }
-      >Wyszukaj</button>
-      <p className="app__error">{ error }</p>
-      { status === 'loading' && <p className="app__paragraph">Trwa wyszukiwanie projektów...</p> }
-      { status === 'failed' && <p className="app__error">Nastąpił błąd podczas wyszukiwania...</p> }
-      { status === 'idle' && !!projects.length && <Projects projects={ projects } /> }
+      <h1 className="app__header">Wyszukaj projekty wybranego autora</h1>
+      <form>
+        <label>
+          <span>Wpisz github login: </span>
+          <input
+            type="text"
+            value={value}
+            className="app__input"
+            onChange={ handleInputChange }
+          />
+        </label>
+        <button
+          className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
+          disabled={ !!error }
+          onClick={ getProjects }
+        >Wyszukaj</button>
+        <p className="app__error">{ error }</p>
+        <SearchResult />
+      </form>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+
 import factorialReducer from '../features/factorialSlice';
 import githubReducer from '../features/githubSlice';
 

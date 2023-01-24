@@ -1,26 +1,35 @@
 import { useState, useEffect } from 'react';
 import { useLocation  } from 'react-router-dom';
-import { Link } from 'react-router-dom'
-import '../styles/navigation.scss'
+import { Link } from 'react-router-dom';
+import '../styles/navigation.scss';
+import { NAV_ELEMENTS } from '../utilities/variables';
 
 const Navigation = () => {
-  const [activeLink, setActiveLink] = useState<string>('')
-  let location = useLocation()
+  const [activeLink, setActiveLink] = useState<string>('');
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    setActiveLink(location.pathname);
-  }, [location.pathname])
+    setActiveLink(pathname);
+  }, [pathname]);
 
   const checkIfActive = (name: string) => {
-    return activeLink === name ? 'navigation__link--active': ''
+    return activeLink === name ? 'navigation__link--active': '';
+  }
+
+  const renderNavList = () => {
+    return NAV_ELEMENTS.map(({ name, path }) => {
+      return (
+        <Link
+          className={(`navigation__link ${ checkIfActive(path) }`).trim()}
+          to={ path }
+          key={ path }
+        >{ name }</Link>
+      )
+    });
   }
 
   return (
-    <nav className="navigation">
-      <Link className={(`navigation__link ${checkIfActive('/')}`).trim()} to="/">Założenia</Link>
-      <Link className={(`navigation__link ${checkIfActive('/factorial')}`).trim()} to="/factorial">Silnia</Link>
-      <Link className={(`navigation__link ${checkIfActive('/githubsearch')}`).trim()} to="/githubsearch">Wyszukiwarka Github</Link>
-    </nav>
+    <nav className="navigation">{ renderNavList() }</nav>
   );
 }
 

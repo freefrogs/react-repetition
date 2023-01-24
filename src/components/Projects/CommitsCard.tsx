@@ -1,13 +1,19 @@
 import type { Commit } from '../../types/github';
 
-const CommitCard = (props: { commit: Commit }) => {
+interface CommitProps {
+  commit: Commit;
+}
+
+const CommitCard = ({ commit }: CommitProps) => {
+  const { commit: commitData, html_url } = commit;
+
   return (
     <p className="projects__commit">
       <a
-          href={props.commit.html_url}
+          href={ html_url }
           target="_blank"
           rel="noopener noreferrer"
-      >{props.commit.commit.message}</a>
+      >{ commitData.message }</a>
     </p>
   );
 }

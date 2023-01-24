@@ -2,16 +2,21 @@ import type { Project } from '../../types/github';
 import '../../styles/projects.scss';
 import CommitsCard from './CommitsCard';
 
-const ProjectCard = (props: { project: Project }) => {
+interface ProjectProps {
+  project: Project;
+}
+
+const ProjectCard = ({ project }: ProjectProps) => {
+  const { html_url, name, commits } = project;
   
   return (
     <div className="projects__card">
       <div className="projects__grid">
         <a
-          href={props.project.html_url}
+          href={ html_url }
           target="_blank"
           rel="noopener noreferrer"
-        >{props.project.name}</a>
+        >{ name }</a>
         <span className="projects__grid--last">
           <button
             className="app__btn"
@@ -20,7 +25,7 @@ const ProjectCard = (props: { project: Project }) => {
       </div>
       <p>Ostatnie commity:</p>
       <div className="app__margin">
-        { props.project.commits?.length ? props.project.commits.map(commit => <CommitsCard commit={ commit } key={commit.sha} />) : 'brak danych' }
+        { commits?.length ? commits.map(commit => <CommitsCard commit={ commit } key={commit.sha} />) : 'brak danych' }
       </div>
     </div>
   );

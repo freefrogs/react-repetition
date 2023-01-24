@@ -12,8 +12,8 @@ const factorialSlice = createSlice({
   name: 'factorial',
   initialState,
   reducers: {
-    addResult: (state, action: PayloadAction<string>) => {
-      state.history.unshift(action.payload)
+    updateHistory: (state, action: PayloadAction<string>) => {
+      state.history.unshift(action.payload);
     },
     clearHistory: (state) => {
       state.history = [];
@@ -24,7 +24,7 @@ const factorialSlice = createSlice({
   }
 });
 
-export const { addResult, clearHistory, updateFactorialArr } = factorialSlice.actions;
+export const { updateHistory, clearHistory, updateFactorialArr } = factorialSlice.actions;
 
 export const getFactorialHistory = (state: RootState) => state.factorial.history;
 export const getFactorialArr = (state: RootState) => state.factorial.factorialArr;

@@ -2,21 +2,29 @@ import type { Project } from '../../types/github';
 import ProjectsCard from './ProjectsCard';
 import '../../styles/projects.scss';
 
-const Projects = (props: { projects: Project[] }) => {
+interface ProjectsProps {
+  projects: Project[];
+}
+
+const Projects = ({ projects }: ProjectsProps) => {
   return (
     <div className="projects">
       <p className="projects__title">
-        Lista projektów dla
-        <a
-          href={props.projects[0].owner.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-        > {props.projects[0].owner.login}</a>
-        :
+        { projects.length ? (
+          <>
+            Lista projektów dla
+            { <a
+              href={ projects[0].owner.html_url }
+              target="_blank"
+              rel="noopener noreferrer"
+            > { projects[0].owner.login }</a> }
+            :
+          </>
+        ) : 'Ten login nie ma jeszcze projektów' }
       </p>
-      { props.projects.map(project => {
-        return <ProjectsCard project={project} key={project.id} />
-      })}
+      { projects.map(project => {
+        return <ProjectsCard project={ project } key={ project.id } />
+      }) }
     </div>
   );
 }

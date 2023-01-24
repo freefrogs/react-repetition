@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { addResult, updateFactorialArr, getFactorialArr } from '../features/factorialSlice';
+import { updateHistory, updateFactorialArr, getFactorialArr } from '../features/factorialSlice';
 import FactorialHistory from "../components/FactorialHistory";
 
 const Factorial = () => {
@@ -21,7 +21,7 @@ const Factorial = () => {
     for (let i = newArr.length; i <= n; i++) {
       newArr.push(i * newArr[i-1]);
     }
-    dispatch(updateFactorialArr(newArr));
+    if (newArr.length !== factorialArr.length) dispatch(updateFactorialArr(newArr));
     return newArr[n]
   }
   
@@ -31,7 +31,7 @@ const Factorial = () => {
   }
 
   useEffect(() => {
-    if (!!result) dispatch(addResult(result));
+    if (!!result) dispatch(updateHistory(result));
   // eslint-disable-next-line
   }, [result]);
 
@@ -40,28 +40,29 @@ const Factorial = () => {
 
     if (!value || !/^\d+$/.test(value) || Number(value) <= 0) return
     setResult(`${value}! = ${factorial(Number(value))}`);
+    setValue('');
   }
 
   return (
     <div className="factorial">
-      <form>
-        <h2 className="app__header">Oblicz silnię</h2>
-        <label>
-          <span>Wprowadź liczbę naturalną: </span>
-          <input
-            type="text"
-            value={value}
-            className="app__input"
-            onChange={handleInputChange}
-          />
-        </label>
-        <button
-          className={(`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim()}
-          disabled={ !!error }
-          onClick={calcFactorial}
-        >Oblicz</button>
-        <p className="app__error">{ error }</p>
-      </form>
+        <h1 className="app__header">Oblicz silnię</h1>
+        <form>
+          <label>
+            <span>Wprowadź liczbę naturalną: </span>
+            <input
+              type="text"
+              value={ value }
+              className="app__input"
+              onChange={ handleInputChange }
+            />
+          </label>
+          <button
+            className={ (`app__btn ${!!error ? 'app__btn--disabled' : ''}`).trim() }
+            disabled={ !!error }
+            onClick={ calcFactorial }
+          >Oblicz</button>
+          <p className="app__error">{ error }</p>
+        </form>
       <FactorialHistory />
     </div>
   );

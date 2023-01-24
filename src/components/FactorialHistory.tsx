@@ -5,9 +5,7 @@ const FactorialHistory = () => {
   const dispatch = useDispatch();
   const history = useSelector(getFactorialHistory);
 
-  const handleClearHistory = () => {
-    dispatch(clearHistory());
-  }
+  const handleClearHistory = () => dispatch(clearHistory());
 
   return (
     <div className="factorial-history">
