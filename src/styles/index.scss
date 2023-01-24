@@ -11,13 +11,20 @@
 }
 
 body {
+  min-width: 320px;
   line-height: 1.2;
   font-family: $main-font;
   color: $main-color;
   background: $body-color;
-  font-size: 20px;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media screen and (min-width: 600px) {
+    font-size: 16px;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 20px;
+  }
 }
 
 a {

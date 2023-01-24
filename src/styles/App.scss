@@ -1,6 +1,7 @@
 @import './variable.scss';
 
 .app {
+  max-width: 1400px;
   &__margin {
     margin: 1em auto;
   }
@@ -55,13 +56,16 @@
 }
 
 .section {
-  width: 80%;
   text-align: center;
-  margin: 2% auto;
-  padding: 1%;
+  margin: 4%;
   min-height: 80vh;
-  border: 6px solid $main-color;
-  box-shadow: 10px 10px 20px $main-color;
-  border-radius: 30px;
   background: $secondary-color;
+  padding: 1em 1em 2em;
+  @media screen and (min-width: 600px) {
+    border: 6px solid $main-color;
+    box-shadow: 10px 10px 20px $main-color;
+    border-radius: 30px;
+    width: 80%;
+    margin: 2% auto;
+  }
 }
