@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import type { AppDispatch } from '../app/store';
+import type { ProjectPayload } from '../types/github';
 import { getProjectStatus, fetchProject, fetchCommits, getProject } from '../features/githubSlice';
 import { checkIfLoginValid, checkIfRepoNameValid } from '../utilities/helpers';
 import Project from '../components/Project';
-import { ProjectPayload } from '../types/github';
+import AnimatedPage from '../components/AnimatedPage';
+
 
 const ProjectDetails = () => {
   const [isProjectExist, setIsProjectExist] = useState<'yes' | 'no'>();
@@ -34,11 +36,11 @@ const ProjectDetails = () => {
   if (isProjectExist === 'no' || projectStatus === 'failed') return <h1>404 page not found</h1>;
 
   return (
-    <div>
+    <AnimatedPage>
       <h1 className="app__header">Szczegóły projektu</h1>
       <Project />
-    </div>
-  )
+    </AnimatedPage>
+  );
 }
 
 export default ProjectDetails;

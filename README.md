@@ -1,6 +1,6 @@
 ## react-repetition
 
-**See demo** at :point_right: [GitHub Pages](https://freefrogs.github.io/Portfolio/#/)
+**See demo** at :point_right: [GitHub Pages](https://freefrogs.github.io/react-repetition/#/)
 
 ### Used technologies:
 * react, react-router-dom, react-redux (with @reduxjs/toolkit),
@@ -14,3 +14,4 @@
 * [Github repo name verification](https://github.com/dead-claudia/github-limits),
 * regex checked with [regex101](https://regex101.com/),
 * [Deployment instruction](https://github.com/gitname/react-gh-pages),
+* Route transition with [Framer Motion.](https://www.framer.com/motion/)

@@ -1,8 +1,10 @@
+import AnimatedPage from '../components/AnimatedPage';
+
 const NotFound = () => {
   return (
-    <div>
+    <AnimatedPage>
       <h1>404 page not found</h1>
-    </div>
+    </AnimatedPage>
   );
 }
 

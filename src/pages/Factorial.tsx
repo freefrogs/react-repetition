@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateHistory, updateFactorialArr, getFactorialArr } from '../features/factorialSlice';
 import FactorialHistory from "../components/FactorialHistory";
+import AnimatedPage from '../components/AnimatedPage';
 
 const Factorial = () => {
   const [error, setError] = useState<string>();
@@ -44,7 +45,8 @@ const Factorial = () => {
   }
 
   return (
-    <div className="factorial">
+    <AnimatedPage>
+      <div className="factorial">
         <h1 className="app__header">Oblicz silnię</h1>
         <form>
           <label>
@@ -63,8 +65,9 @@ const Factorial = () => {
           >Oblicz</button>
           <p className="app__error">{ error }</p>
         </form>
-      <FactorialHistory />
-    </div>
+        <FactorialHistory />
+      </div>
+    </AnimatedPage>
   );
 }
 
