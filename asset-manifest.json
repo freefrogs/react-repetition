@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-repetition/static/css/main.b0d99fa9.css",
-    "main.js": "/react-repetition/static/js/main.651b9ad5.js",
+    "main.css": "/react-repetition/static/css/main.27894ccd.css",
+    "main.js": "/react-repetition/static/js/main.f20bce1d.js",
     "index.html": "/react-repetition/index.html",
-    "main.b0d99fa9.css.map": "/react-repetition/static/css/main.b0d99fa9.css.map",
-    "main.651b9ad5.js.map": "/react-repetition/static/js/main.651b9ad5.js.map"
+    "main.27894ccd.css.map": "/react-repetition/static/css/main.27894ccd.css.map",
+    "main.f20bce1d.js.map": "/react-repetition/static/js/main.f20bce1d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0d99fa9.css",
-    "static/js/main.651b9ad5.js"
+    "static/css/main.27894ccd.css",
+    "static/js/main.f20bce1d.js"
   ]
 }
