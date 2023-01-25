@@ -47,8 +47,14 @@ const githubSlice = createSlice({
         state.status = 'succeeded';
         state.projects = action.payload;
       })
-      .addCase(fetchProjectsWithCommits.rejected, (state) => {
-        state.status = 'failed';
+      .addCase(fetchProjectsWithCommits.rejected, (state, action) => {
+        if (action.error.message?.includes('404')) {
+          state.status = 'failed_404';
+        } else if (action.error.message?.includes('403')) {
+          state.status = 'failed_403';
+        } else {
+          state.status = 'failed';
+        }
       })
       .addCase(fetchProject.pending, (state) => {
         state.projectStatus = 'loading';
@@ -57,8 +63,14 @@ const githubSlice = createSlice({
         state.project = [action.payload];
         state.projectStatus = 'succeeded';
       })
-      .addCase(fetchProject.rejected, (state) => {
-        state.projectStatus = 'failed';
+      .addCase(fetchProject.rejected, (state, action) => {
+        if (action.error.message?.includes('404')) {
+          state.projectStatus = 'failed_404';
+        } else if (action.error.message?.includes('403')) {
+          state.projectStatus = 'failed_403';
+        } else {
+          state.projectStatus = 'failed';
+        }
       })
       .addCase(fetchCommits.pending, (state) => {
         state.commitsStatus = 'loading';

@@ -14,6 +14,8 @@ const Factorial = () => {
   const checkInputValue = (val?: string) => {
     const isNotNaturalNumber = !val || !/^\d+$/.test(val) || Number(val) <= 0;
     isNotNaturalNumber ? setError('Wprowadź liczbę całkowitą większą od zera') : setError('');
+    const isResultInfinity = Number(val) >= 171
+    isResultInfinity ? setError('Wynik jest zbyt wysoki by zostać wyświetlony (Infinity)') : setError('');
   }
 
   const factorialArr = useSelector(getFactorialArr);

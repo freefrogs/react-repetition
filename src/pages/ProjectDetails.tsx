@@ -32,8 +32,10 @@ const ProjectDetails = () => {
   // eslint-disable-next-line
   }, []);
 
+  if (isProjectExist === 'no' || projectStatus === 'failed_404') return <h1>Wprowadzono niepoprawne dane</h1>;
+  if (projectStatus === 'failed_403') return <h1>Przekroczono limit wyszukiwań, spróbuj ponownie później</h1>;
+  if (projectStatus === 'failed') return <h1>Coś poszło nie tak, spróbuj ponownie później</h1>;
   if (projectStatus === 'idle' || !project.length) return <h1>Wyszukiwanie danych...</h1>;
-  if (isProjectExist === 'no' || projectStatus === 'failed') return <h1>404 page not found</h1>;
 
   return (
     <AnimatedPage>

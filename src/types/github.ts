@@ -24,7 +24,7 @@ export interface Commit {
   committer: Owner;
 }
 
-type Status = 'idle' | 'loading' | 'failed' | 'succeeded';
+type Status = 'idle' | 'loading' | 'failed' | 'failed_403' | 'failed_404' | 'succeeded';
 
 export interface githubState {
   projects: Project[];

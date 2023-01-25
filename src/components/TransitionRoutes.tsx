@@ -11,7 +11,7 @@ const TransitionRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <Routes location={ location } key={ location.pathname }>
         <Route path="/" element={ <Assumptions /> } />
         <Route path="/factorial" element={ <Factorial /> } />
